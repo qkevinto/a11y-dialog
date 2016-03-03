@@ -23,15 +23,15 @@ casper.test.begin('Dialog window test suite', 37, function (test) {
       console.log('CONSOLE: ' + msg);
     };
 
-    this.page.injectJs('./a11y-dialog.js');
+    this.page.injectJs('./modal.js');
     this.page.evaluateJavaScript('function () { window.m = new window.A11yDialog(document.getElementById("' + dialogID + '")); }');
     this.emit('page.loaded');
   });
 
   casper.on('page.loaded', function () {
     var dialog = '#' + dialogID;
-    var opener = '[data-a11y-dialog-show="' + dialogID + '"]';
-    var closer = dialog + ' [data-a11y-dialog-hide]';
+    var opener = '[data-modal-show="' + dialogID + '"]';
+    var closer = dialog + ' [data-modal-hide]';
     var overlay = dialog + ' > .dialog-overlay';
 
     this.then(function () {
