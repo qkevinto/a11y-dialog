@@ -43,7 +43,7 @@
    * @param {Node} main - Main element of the page
    */
   var Modal = function (node, main) {
-    var namespace = 'data-a11y-modal';
+    var namespace = 'data-modal';
     var that = this;
     main = main || document.querySelector('#main');
 
