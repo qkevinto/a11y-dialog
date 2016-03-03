@@ -35,15 +35,15 @@
     if (focusableChildren.length) focusableChildren[0].focus();
   }
 
-  var focusedBeforeDialog;
+  var focusedBeforeModal;
 
   /**
-   * A11yDialog constructor
-   * @param {Node} node - Dialog element
+   * Modal constructor
+   * @param {Node} node - Modal element
    * @param {Node} main - Main element of the page
    */
-  var A11yDialog = function (node, main) {
-    var namespace = 'data-a11y-dialog';
+  var Modal = function (node, main) {
+    var namespace = 'data-a11y-modal';
     var that = this;
     main = main || document.querySelector('#main');
 
@@ -80,7 +80,7 @@
       that.shown = true;
       node.removeAttribute('aria-hidden');
       main.setAttribute('aria-hidden', 'true');
-      focusedBeforeDialog = document.activeElement;
+      focusedBeforeModal = document.activeElement;
       setFocusToFirstItem(node);
     }
 
@@ -88,9 +88,9 @@
       that.shown = false;
       node.setAttribute('aria-hidden', 'true');
       main.removeAttribute('aria-hidden');
-      focusedBeforeDialog.focus();
+      focusedBeforeModal.focus();
     }
   };
 
-  global.A11yDialog = A11yDialog;
+  global.Modal = Modal;
 }(window));
